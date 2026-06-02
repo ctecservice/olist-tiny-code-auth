@@ -25,7 +25,7 @@ A URL completa do fluxo OIDC é montada automaticamente pela aplicação com os 
 
 A aplicação está publicada em:
 
-**https://olist-tiny-teste2.vercel.app/**
+**https://olist-tiny-code-auth.vercel.app//**
 
 Abra o link, informe o `client_id` registrado no seu app do Olist Tiny, autentique-se e o `authorization code` será exibido na tela.
 
@@ -62,7 +62,7 @@ Sem dependências externas em runtime além do Flask. Sem SDKs proprietários.
 
 ### Opção 1 — Usar a versão publicada (recomendado)
 
-1. Acesse **[https://olist-tiny-teste2.vercel.app/](https://olist-tiny-teste2.vercel.app/)**.
+1. Acesse **[https://olist-tiny-code-auth.vercel.app//](https://olist-tiny-code-auth.vercel.app//)**.
 2. No campo **Client ID**, cole o `client_id` do seu aplicativo registrado no Olist Tiny.
 3. Clique em **Gerar Código de Autorização**.
 4. Faça login no Tiny e autorize o acesso.
@@ -76,7 +76,7 @@ curl -X POST https://accounts.tiny.com.br/realms/tiny/protocol/openid-connect/to
   -d "client_id=SEU_CLIENT_ID" \
   -d "client_secret=SEU_CLIENT_SECRET" \
   -d "code=AUTHORIZATION_CODE_RECEBIDO" \
-  -d "redirect_uri=https://olist-tiny-teste2.vercel.app/callback"
+  -d "redirect_uri=https://olist-tiny-code-auth.vercel.app/callback"
 ```
 
 ### Opção 2 — Rodar localmente
@@ -103,7 +103,7 @@ Para que o Tiny aceite o redirect de volta para esta aplicação, você precisa 
 3. No campo **URL de Redirecionamento** (Redirect URI), informe:
 
 ```
-https://olist-tiny-teste2.vercel.app/callback
+https://olist-tiny-code-auth.vercel.app//callback
 ```
 
 > Em ambiente de desenvolvimento local, use `http://localhost:5000/callback`. A URL deve ser **exata** — incluindo o caminho `/callback` e o esquema (`http` vs `https`).
@@ -207,7 +207,7 @@ Este projeto está licenciado sob a **MIT License** — veja [LICENSE](LICENSE).
 
 ## Links úteis
 
-- [Demo ao vivo](https://olist-tiny-teste2.vercel.app/)
+- [Demo ao vivo](https://olist-tiny-code-auth.vercel.app/)
 - [Documentação de autenticação Olist Tiny](https://api-docs.erp.olist.com/documentacao/comecando/autenticacao)
 - [OAuth 2.0 Authorization Framework (RFC 6749)](https://datatracker.ietf.org/doc/html/rfc6749)
 - [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
