@@ -213,3 +213,9 @@ Este projeto está licenciado sob a **MIT License** — veja [LICENSE](LICENSE).
 - [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
 - [Flask — Documentação oficial](https://flask.palletsprojects.com/)
 - [Vercel Python Runtime](https://vercel.com/docs/functions/serverless-functions/runtimes/python)
+
+---
+
+![Quadrinho Olist Tiny Code Auth](static/quadrinho_olist-tiny-code-auth.jpg)
+
+> Imagem gerada por IA, compartilhada em grupos de WhatsApp, com uso autorizado por seus criadores.
