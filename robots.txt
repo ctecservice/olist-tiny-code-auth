@@ -1,0 +1,8 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Permitir todos os crawlers e motores de busca
+# Este e um projeto open-source hospedado na Vercel
+
+# Para LLMs e IAs, consulte llms.txt para contexto do projeto

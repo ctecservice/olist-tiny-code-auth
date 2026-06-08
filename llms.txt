@@ -1,0 +1,78 @@
+# llms.txt — olist-tiny-code-auth
+# Projeto open-source para geracao de authorization codes do Tiny ERP via OAuth2
+# Hospedado na Vercel e disponivel para qualquer pessoa utilizar
+
+## Visao Geral
+
+O `olist-tiny-code-auth` e uma aplicacao web minimalista em Python/Flask que facilita
+a obtencao de **authorization codes** do Tiny ERP por meio do fluxo OAuth2
+authorization-code (OpenID Connect).
+
+A aplicacao nao troca o code por access_token — ela apenas gera e exibe o code,
+que deve ser utilizado por outro sistema (ex.: Olist) para obter o token.
+
+- **Stack**: Python 3.9+, Flask, pytest
+- **Deploy**: Vercel (serverless) via `vercel.json`
+- **Repositorio**: Open-source
+
+## Fluxo Resumido
+
+1. Usuario acessa a pagina inicial (`/`) e informa seu `client_id` do Tiny.
+2. A aplicacao monta a URL de autenticacao OIDC e redireciona para o Tiny.
+3. Usuario se autentica no Tiny.
+4. O Tiny redireciona de volta para `/callback?code=XYZ`.
+5. A pagina de callback exibe o `authorization code` para copiar.
+
+## Rotas HTTP
+
+| Rota          | Metodo | Descricao                                          |
+|---------------|--------|----------------------------------------------------|
+| `/`           | GET    | Formulario para informar o `client_id`             |
+| `/authorize`  | POST   | Recebe `client_id` e redireciona para login Tiny   |
+| `/callback`   | GET    | Recebe o `code` ou `error` do Tiny apos login      |
+
+## Funcao Auxiliar
+
+- `build_auth_url(client_id, redirect_uri, state)` — monta a URL de autenticacao
+  OpenID Connect do Tiny usando `urllib.parse.urlencode`.
+
+## O Que Esta App NAO Faz
+
+- Nao troca `code` por `access_token`.
+- Nao persiste tokens.
+- Nao valida o `state` no callback (o Tiny ja gerencia o anti-CSRF no fluxo OIDC).
+
+## Documentacao Completa
+
+A documentacao detalhada esta no diretorio `docs/`:
+
+- [docs/README.md](docs/README.md) — Indice da documentacao
+- [docs/uso.md](docs/uso.md) — Passo a passo para gerar o authorization code
+- [docs/api.md](docs/api.md) — Referencia das rotas HTTP e da funcao `build_auth_url`
+- [docs/arquitetura.md](docs/arquitetura.md) — Fluxo OAuth2, componentes e decisoes de design
+- [docs/deploy.md](docs/deploy.md) — Deploy no Vercel e troubleshooting
+
+## Variaveis de Ambiente
+
+| Variavel         | Obrigatoria | Descricao                                    |
+|------------------|:-----------:|----------------------------------------------|
+| `FLASK_SECRET_KEY` | Nao         | Chave secreta para sessoes Flask. Se ausente, gerada aleatoriamente a cada restart. |
+
+## Testes
+
+```bash
+python -m pytest test_app.py -v
+```
+
+12 testes cobrindo rotas, erros e `build_auth_url`.
+
+## Entrypoints
+
+- **Vercel (producao)**: `index.py` — importa `app` de `app.py`
+- **Dev local**: `python app.py` (servidor Flask em `0.0.0.0:5000`)
+
+## Links Externos
+
+- [Tiny ERP — Documentacao OpenID Connect](https://docs.tiny.com.br)
+- [Flask — Documentacao oficial](https://flask.palletsprojects.com)
+- [OAuth 2.0 Authorization Framework (RFC 6749)](https://datatracker.ietf.org/doc/html/rfc6749)
