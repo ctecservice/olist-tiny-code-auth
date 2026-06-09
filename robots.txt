@@ -5,4 +5,6 @@ Allow: /
 # Permitir todos os crawlers e motores de busca
 # Este e um projeto open-source hospedado na Vercel
 
-# Para LLMs e IAs, consulte llms.txt para contexto do projeto
+# Arquivos de contexto para agentes de IA
+Allow: /llms.txt
+Allow: /robots.txt

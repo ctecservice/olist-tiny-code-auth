@@ -25,11 +25,13 @@ que deve ser utilizado por outro sistema (ex.: Olist) para obter o token.
 
 ## Rotas HTTP
 
-| Rota          | Metodo | Descricao                                          |
-|---------------|--------|----------------------------------------------------|
-| `/`           | GET    | Formulario para informar o `client_id`             |
-| `/authorize`  | POST   | Recebe `client_id` e redireciona para login Tiny   |
-| `/callback`   | GET    | Recebe o `code` ou `error` do Tiny apos login      |
+| Rota          | Metodo | Descricao                                                        |
+|---------------|--------|------------------------------------------------------------------|
+| `/`           | GET    | Formulario para informar o `client_id`                           |
+| `/authorize`  | POST   | Recebe `client_id` e redireciona para login Tiny                 |
+| `/callback`   | GET    | Recebe o `code` ou `error` do Tiny apos login                    |
+| `/llms.txt`   | GET    | Serve este arquivo para agentes de IA (content-type: text/plain) |
+| `/robots.txt` | GET    | Serve o arquivo robots.txt para crawlers (content-type: text/plain) |
 
 ## Funcao Auxiliar
 
@@ -64,7 +66,7 @@ A documentacao detalhada esta no diretorio `docs/`:
 python -m pytest test_app.py -v
 ```
 
-12 testes cobrindo rotas, erros e `build_auth_url`.
+18 testes cobrindo rotas, erros, `build_auth_url` e servimento de arquivos estaticos (`llms.txt`, `robots.txt`).
 
 ## Entrypoints
 
