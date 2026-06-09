@@ -3,7 +3,7 @@ import os
 import secrets
 from urllib.parse import urlencode
 
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +32,18 @@ def build_auth_url(client_id: str, redirect_uri: str, state: str) -> str:
         "state": state,
     }
     return f"{TINY_AUTH_URL}?{urlencode(params)}"
+
+
+@app.route("/llms.txt")
+def llms_txt():
+    """Serve o arquivo llms.txt para agentes de IA."""
+    return send_from_directory(app.root_path, "llms.txt", mimetype="text/plain")
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    """Serve o arquivo robots.txt para crawlers."""
+    return send_from_directory(app.root_path, "robots.txt", mimetype="text/plain")
 
 
 @app.route("/")

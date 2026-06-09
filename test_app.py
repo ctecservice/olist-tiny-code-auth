@@ -102,3 +102,36 @@ class TestBuildAuthUrl:
         )
         assert "client_id=id+with+spaces" in url
         assert "state=st%2F%2B%3D%3F" in url
+
+
+class TestLlmsTxtRoute:
+    """Testes para a rota GET /llms.txt."""
+
+    def test_llms_txt_returns_200(self, client):
+        response = client.get("/llms.txt")
+        assert response.status_code == 200
+
+    def test_llms_txt_content_type(self, client):
+        response = client.get("/llms.txt")
+        assert response.content_type == "text/plain; charset=utf-8"
+
+    def test_llms_txt_contains_project_name(self, client):
+        response = client.get("/llms.txt")
+        assert b"olist-tiny-code-auth" in response.data
+
+
+class TestRobotsTxtRoute:
+    """Testes para a rota GET /robots.txt."""
+
+    def test_robots_txt_returns_200(self, client):
+        response = client.get("/robots.txt")
+        assert response.status_code == 200
+
+    def test_robots_txt_content_type(self, client):
+        response = client.get("/robots.txt")
+        assert response.content_type == "text/plain; charset=utf-8"
+
+    def test_robots_txt_allows_all(self, client):
+        response = client.get("/robots.txt")
+        assert b"User-agent: *" in response.data
+        assert b"Allow: /" in response.data
