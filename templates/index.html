@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gerador de Authorization Code para o fluxo OAuth2 do Olist Tiny v3. Open source, serverless e sem armazenamento de dados.">
+    <meta name="description"
+        content="Gerador de Authorization Code para o fluxo OAuth2 do Olist Tiny v3. Open source, serverless e sem armazenamento de dados.">
     <title>Olist Tiny Code Auth — Gerador de Authorization Code</title>
     <style>
         :root {
@@ -22,9 +24,12 @@
             --github: #24292e;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             background-color: var(--bg);
@@ -40,8 +45,15 @@
             flex-direction: column;
         }
 
-        a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--primary-hover); }
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+        }
 
         /* ---------- Navbar ---------- */
         .navbar {
@@ -85,7 +97,9 @@
             font-weight: 500;
         }
 
-        .navbar-links a:hover { color: var(--text); }
+        .navbar-links a:hover {
+            color: var(--text);
+        }
 
         .btn-github {
             display: inline-flex;
@@ -100,7 +114,11 @@
             transition: transform 0.15s, background 0.2s;
         }
 
-        .btn-github:hover { background: #1b1f23; color: #fff; transform: translateY(-1px); }
+        .btn-github:hover {
+            background: #1b1f23;
+            color: #fff;
+            transform: translateY(-1px);
+        }
 
         /* ---------- Container ---------- */
         .container {
@@ -110,10 +128,17 @@
             width: 100%;
         }
 
-        main { flex: 1; }
+        main {
+            flex: 1;
+        }
 
-        section { padding: 80px 0; }
-        section + section { border-top: 1px solid var(--border); }
+        section {
+            padding: 80px 0;
+        }
+
+        section+section {
+            border-top: 1px solid var(--border);
+        }
 
         /* ---------- Hero ---------- */
         .hero {
@@ -185,14 +210,23 @@
             background: var(--primary);
             color: #fff;
         }
-        .btn-primary:hover { background: var(--primary-hover); color: #fff; transform: translateY(-1px); }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            color: #fff;
+            transform: translateY(-1px);
+        }
 
         .btn-secondary {
             background: transparent;
             color: var(--text);
             border-color: var(--border-strong);
         }
-        .btn-secondary:hover { background: var(--bg-elev); color: var(--text); }
+
+        .btn-secondary:hover {
+            background: var(--bg-elev);
+            color: var(--text);
+        }
 
         /* ---------- Section heading ---------- */
         .section-head {
@@ -236,7 +270,10 @@
             transition: transform 0.2s, border-color 0.2s;
         }
 
-        .feature-card:hover { transform: translateY(-2px); border-color: var(--border-strong); }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+        }
 
         .feature-icon {
             width: 44px;
@@ -250,8 +287,16 @@
             margin-bottom: 16px;
         }
 
-        .feature-card h3 { font-size: 1.1rem; margin: 0 0 8px; }
-        .feature-card p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin: 0 0 8px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin: 0;
+        }
 
         /* ---------- How it works ---------- */
         .steps {
@@ -284,10 +329,20 @@
             margin-bottom: 14px;
         }
 
-        .step-number::before { content: counter(step); }
+        .step-number::before {
+            content: counter(step);
+        }
 
-        .step h4 { font-size: 1rem; margin: 0 0 6px; }
-        .step p { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+        .step h4 {
+            font-size: 1rem;
+            margin: 0 0 6px;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin: 0;
+        }
 
         /* ---------- Setup ---------- */
         .setup-card {
@@ -309,7 +364,9 @@
             color: var(--text-muted);
         }
 
-        .setup-card ol li strong { color: var(--text); }
+        .setup-card ol li strong {
+            color: var(--text);
+        }
 
         .code-block {
             background: rgba(0, 0, 0, 0.4);
@@ -325,7 +382,9 @@
         }
 
         /* ---------- Form ---------- */
-        .form-section { padding-bottom: 96px; }
+        .form-section {
+            padding-bottom: 96px;
+        }
 
         .form-card {
             background: var(--bg-elev);
@@ -438,7 +497,9 @@
             max-width: 600px;
         }
 
-        .footer-text strong { color: var(--text); }
+        .footer-text strong {
+            color: var(--text);
+        }
 
         .footer-cta {
             display: inline-flex;
@@ -457,15 +518,33 @@
 
         /* ---------- Responsive ---------- */
         @media (max-width: 640px) {
-            .navbar { padding: 16px 20px; }
-            .container { padding: 0 20px; }
-            section { padding: 56px 0; }
-            .hero { padding: 56px 0; }
-            .form-card { padding: 28px 24px; }
-            .navbar-links a:not(.btn-github) { display: none; }
+            .navbar {
+                padding: 16px 20px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            section {
+                padding: 56px 0;
+            }
+
+            .hero {
+                padding: 56px 0;
+            }
+
+            .form-card {
+                padding: 28px 24px;
+            }
+
+            .navbar-links a:not(.btn-github) {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -477,9 +556,14 @@
         <div class="navbar-links">
             <a href="#como-funciona">Como funciona</a>
             <a href="#configurar">Configurar</a>
-            <a href="https://api-docs.erp.olist.com/documentacao/comecando/autenticacao" target="_blank" rel="noopener">Docs Tiny</a>
-            <a href="https://github.com/ctecservice/olist-tiny-code-auth" target="_blank" rel="noopener" class="btn-github">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.81 8.21 11.39.6.11.82-.26.82-.58v-2.18c-3.34.72-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg>
+            <a href="https://api-docs.erp.olist.com/documentacao/comecando/autenticacao" target="_blank"
+                rel="noopener">Docs Tiny</a>
+            <a href="https://github.com/ctecservice/olist-tiny-code-auth" target="_blank" rel="noopener"
+                class="btn-github">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.81 8.21 11.39.6.11.82-.26.82-.58v-2.18c-3.34.72-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12Z" />
+                </svg>
                 GitHub
             </a>
         </div>
@@ -497,12 +581,15 @@
                 <h1>Gere o Authorization Code<br>do Olist Tiny v3 em segundos</h1>
                 <p class="lead">
                     Aplicação web que simplifica o primeiro passo do fluxo OAuth2 do Olist Tiny.
-                    Informe seu <code style="background:var(--bg-elev);padding:2px 8px;border-radius:4px;color:var(--primary);">client_id</code>,
-                    autentique-se no Tiny e receba o código pronto para trocar pelo seu <code style="background:var(--bg-elev);padding:2px 8px;border-radius:4px;color:var(--primary);">access_token</code>.
+                    Informe seu <code
+                        style="background:var(--bg-elev);padding:2px 8px;border-radius:4px;color:var(--primary);">client_id</code>,
+                    autentique-se no Tiny e receba o código pronto para trocar pelo seu <code
+                        style="background:var(--bg-elev);padding:2px 8px;border-radius:4px;color:var(--primary);">access_token</code>.
                 </p>
                 <div class="hero-cta">
                     <a href="#gerar-codigo" class="btn btn-primary">Gerar código agora</a>
-                    <a href="https://api-docs.erp.olist.com/documentacao/comecando/autenticacao" target="_blank" rel="noopener" class="btn btn-secondary">Ver documentação do Tiny</a>
+                    <a href="https://api-docs.erp.olist.com/documentacao/comecando/autenticacao" target="_blank"
+                        rel="noopener" class="btn btn-secondary">Ver documentação do Tiny</a>
                 </div>
             </div>
         </section>
@@ -513,36 +600,56 @@
                 <div class="section-head">
                     <div class="eyebrow">Sobre o projeto</div>
                     <h2>O que é o Olist Tiny Code Auth?</h2>
-                    <p>Uma ponte minimalista entre você e o fluxo OpenID Connect do Olist Tiny. Construída para ser direta, transparente e sem fricção.</p>
+                    <p>Uma ponte minimalista entre você e o fluxo OpenID Connect do Olist Tiny. Construída para ser
+                        direta, transparente e sem fricção.</p>
                 </div>
                 <div class="about-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
                         </div>
                         <h3>100% serverless</h3>
-                        <p>Roda em funções serverless no Vercel. Sem banco de dados, sem cache, sem persistência de qualquer tipo.</p>
+                        <p>Roda em funções serverless no Vercel. Sem banco de dados, sem cache, sem persistência de
+                            qualquer tipo.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="m9 12 2 2 4-4"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg>
                         </div>
                         <h3>Sem armazenamento</h3>
-                        <p>O <code>client_id</code> informado e o <code>authorization code</code> retornado não são gravados em lugar nenhum.</p>
+                        <p>O <code>client_id</code> informado e o <code>authorization code</code> retornado não são
+                            gravados em lugar nenhum.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            </svg>
                         </div>
                         <h3>Open source</h3>
-                        <p>Código aberto sob licença MIT. Audite, contribua ou faça fork. Desenvolvido e mantido pela CTEC.</p>
+                        <p>Código aberto sob licença MIT. Audite, contribua ou faça fork. Desenvolvido e mantido pela
+                            CTEC.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
                         </div>
                         <h3>State anti-CSRF</h3>
-                        <p>Cada requisição gera um token <code>state</code> único via CSPRNG, protegendo o fluxo contra ataques CSRF.</p>
+                        <p>Cada requisição gera um token <code>state</code> único via CSPRNG, protegendo o fluxo contra
+                            ataques CSRF.</p>
                     </div>
                 </div>
             </div>
@@ -565,7 +672,8 @@
                     <div class="step">
                         <div class="step-number"></div>
                         <h4>Redirecionamento OIDC</h4>
-                        <p>A aplicação monta a URL do Tiny com <code>scope=openid</code> e <code>state</code> único, e redireciona você.</p>
+                        <p>A aplicação monta a URL do Tiny com <code>scope=openid</code> e <code>state</code> único, e
+                            redireciona você.</p>
                     </div>
                     <div class="step">
                         <div class="step-number"></div>
@@ -587,26 +695,32 @@
                 <div class="section-head">
                     <div class="eyebrow">Configuração</div>
                     <h2>Como configurar no Olist Tiny v3</h2>
-                    <p>Antes de usar, registre a URL de Redirecionamento no cadastro do seu aplicativo no painel do desenvolvedor Olist.</p>
+                    <p>Antes de usar, registre a URL de Redirecionamento no cadastro do seu aplicativo no painel do
+                        desenvolvedor Olist.</p>
                 </div>
                 <div class="setup-card">
                     <ol>
                         <li>
-                            Acesse o <strong>painel do desenvolvedor do Olist Tiny</strong> e abra o cadastro do seu aplicativo (ou crie um novo).
+                            Acesse o <strong>painel do desenvolvedor do Olist Tiny</strong> e abra o cadastro do seu
+                            aplicativo (ou crie um novo).
                         </li>
                         <li>
                             No campo <strong>URL de Redirecionamento</strong> (Redirect URI), informe exatamente:
                             <br>
-                            <span class="code-block">https://olist-tiny-teste2.vercel.app/callback</span>
+                            <span class="code-block">https://olist-tiny-code-auth.vercel.app/callback</span>
                             <br>
-                            <small style="color:var(--text-dim);">Em desenvolvimento local, use <code>http://localhost:5000/callback</code>.</small>
+                            <small style="color:var(--text-dim);">Em desenvolvimento local, use
+                                <code>http://localhost:5000/callback</code>.</small>
                         </li>
                         <li>
-                            Salve o cadastro. O <strong>client_id</strong> e o <strong>client_secret</strong> serão gerados pelo painel.
+                            Salve o cadastro. O <strong>client_id</strong> e o <strong>client_secret</strong> serão
+                            gerados pelo painel.
                         </li>
                         <li>
-                            Volte para cá e gere o authorization code. Em seguida, troque-o pelo <code>access_token</code> no endpoint de token do Tiny, conforme a
-                            <a href="https://api-docs.erp.olist.com/documentacao/comecando/autenticacao" target="_blank" rel="noopener">documentação oficial</a>.
+                            Volte para cá e gere o authorization code. Em seguida, troque-o pelo
+                            <code>access_token</code> no endpoint de token do Tiny, conforme a
+                            <a href="https://api-docs.erp.olist.com/documentacao/comecando/autenticacao" target="_blank"
+                                rel="noopener">documentação oficial</a>.
                         </li>
                     </ol>
                 </div>
@@ -621,8 +735,8 @@
                     <p class="subtitle">Informe seu Client ID para iniciar a autorização.</p>
                     <form action="/authorize" method="POST">
                         <label for="client_id">Client ID</label>
-                        <input type="text" id="client_id" name="client_id"
-                               placeholder="Cole seu Client ID aqui" required autocomplete="off">
+                        <input type="text" id="client_id" name="client_id" placeholder="Cole seu Client ID aqui"
+                            required autocomplete="off">
                         <button type="submit">Gerar Código de Autorização</button>
                     </form>
                     <p class="form-hint">
@@ -644,12 +758,17 @@
                     <span>CTEC</span>
                 </div>
                 <p class="footer-text">
-                    Projeto <strong>Olist Tiny Code Auth</strong> é desenvolvido e mantido pela <strong>CTEC</strong>.<br>
+                    Projeto <strong>Olist Tiny Code Auth</strong> é desenvolvido e mantido pela
+                    <strong>CTEC</strong>.<br>
                     Código aberto, sem fins lucrativos, com o objetivo de simplificar a integração com o Olist Tiny.
                 </p>
                 <a href="https://ctec.com.br/" target="_blank" rel="noopener" class="footer-cta">
                     Visite a CTEC
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 17 17 7" />
+                        <path d="M7 7h10v10" />
+                    </svg>
                 </a>
                 <p class="footer-meta">
                     Licença MIT &middot; Open Source &middot; Sem armazenamento de dados
@@ -659,4 +778,5 @@
     </footer>
 
 </body>
+
 </html>
