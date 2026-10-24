@@ -50,6 +50,18 @@ Thumbs.db
 # Logs
 *.log
 
+# Dados e logs gerados em tempo de execucao
+logs/
+data/
+
+# Ferramenta local de sincronizacao com o repositorio privado (nao versionar)
+sincronizar-interno.bat
+
+# Estado local do Postman CLI e lixeira local do projeto
+.postman/
+trash/
+session-ses_*.md
+
 # ---- Arquivos relacionados a IA (NAO versionar) ----
 AGENTS.md
 CLAUDE.md
